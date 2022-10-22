@@ -1,0 +1,402 @@
+[
+  {
+    "busNumber": 1,
+    "stopCount": 15,
+    "busStops": [
+      {
+        "stopAreaId": 10016,
+        "stopName": "Kungsbroplan"
+      },
+      {
+        "stopAreaId": 10018,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10019,
+        "stopName": "Cityterminalen"
+      },
+      {
+        "stopAreaId": 10020,
+        "stopName": "Vasagatan"
+      },
+      {
+        "stopAreaId": 10022,
+        "stopName": "Ruddammen"
+      },
+      {
+        "stopAreaId": 10024,
+        "stopName": "Hötorget"
+      },
+      {
+        "stopAreaId": 10033,
+        "stopName": "Linnégatan"
+      },
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      },
+      {
+        "stopAreaId": 10011,
+        "stopName": "Frihamnsporten"
+      },
+      {
+        "stopAreaId": 10012,
+        "stopName": "Celsiusgatan"
+      },
+      {
+        "stopAreaId": 10013,
+        "stopName": "S:t Eriksgatan"
+      },
+      {
+        "stopAreaId": 10014,
+        "stopName": "Scheelegatan"
+      }
+    ]
+  },
+  {
+    "busNumber": 14,
+    "stopCount": 13,
+    "busStops": [
+      {
+        "stopAreaId": 10016,
+        "stopName": "Kungsbroplan"
+      },
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10018,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10019,
+        "stopName": "Cityterminalen"
+      },
+      {
+        "stopAreaId": 10020,
+        "stopName": "Vasagatan"
+      },
+      {
+        "stopAreaId": 10022,
+        "stopName": "Ruddammen"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      },
+      {
+        "stopAreaId": 10011,
+        "stopName": "Frihamnsporten"
+      },
+      {
+        "stopAreaId": 10012,
+        "stopName": "Celsiusgatan"
+      },
+      {
+        "stopAreaId": 10013,
+        "stopName": "S:t Eriksgatan"
+      },
+      {
+        "stopAreaId": 10014,
+        "stopName": "Scheelegatan"
+      }
+    ]
+  },
+  {
+    "busNumber": 13,
+    "stopCount": 12,
+    "busStops": [
+      {
+        "stopAreaId": 10016,
+        "stopName": "Kungsbroplan"
+      },
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10018,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10019,
+        "stopName": "Cityterminalen"
+      },
+      {
+        "stopAreaId": 10020,
+        "stopName": "Vasagatan"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      },
+      {
+        "stopAreaId": 10011,
+        "stopName": "Frihamnsporten"
+      },
+      {
+        "stopAreaId": 10012,
+        "stopName": "Celsiusgatan"
+      },
+      {
+        "stopAreaId": 10013,
+        "stopName": "S:t Eriksgatan"
+      },
+      {
+        "stopAreaId": 10014,
+        "stopName": "Scheelegatan"
+      }
+    ]
+  },
+  {
+    "busNumber": 5,
+    "stopCount": 9,
+    "busStops": [
+      {
+        "stopAreaId": 10016,
+        "stopName": "Kungsbroplan"
+      },
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      },
+      {
+        "stopAreaId": 10011,
+        "stopName": "Frihamnsporten"
+      },
+      {
+        "stopAreaId": 10012,
+        "stopName": "Celsiusgatan"
+      },
+      {
+        "stopAreaId": 10013,
+        "stopName": "S:t Eriksgatan"
+      },
+      {
+        "stopAreaId": 10014,
+        "stopName": "Scheelegatan"
+      }
+    ]
+  },
+  {
+    "busNumber": 11,
+    "stopCount": 8,
+    "busStops": [
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      },
+      {
+        "stopAreaId": 10011,
+        "stopName": "Frihamnsporten"
+      },
+      {
+        "stopAreaId": 10012,
+        "stopName": "Celsiusgatan"
+      },
+      {
+        "stopAreaId": 10013,
+        "stopName": "S:t Eriksgatan"
+      },
+      {
+        "stopAreaId": 10014,
+        "stopName": "Scheelegatan"
+      }
+    ]
+  },
+  {
+    "busNumber": 8,
+    "stopCount": 7,
+    "busStops": [
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      },
+      {
+        "stopAreaId": 10011,
+        "stopName": "Frihamnsporten"
+      },
+      {
+        "stopAreaId": 10012,
+        "stopName": "Celsiusgatan"
+      },
+      {
+        "stopAreaId": 10013,
+        "stopName": "S:t Eriksgatan"
+      }
+    ]
+  },
+  {
+    "busNumber": 6,
+    "stopCount": 6,
+    "busStops": [
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      },
+      {
+        "stopAreaId": 10011,
+        "stopName": "Frihamnsporten"
+      },
+      {
+        "stopAreaId": 10012,
+        "stopName": "Celsiusgatan"
+      }
+    ]
+  },
+  {
+    "busNumber": 7,
+    "stopCount": 6,
+    "busStops": [
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      },
+      {
+        "stopAreaId": 10011,
+        "stopName": "Frihamnsporten"
+      },
+      {
+        "stopAreaId": 10012,
+        "stopName": "Celsiusgatan"
+      }
+    ]
+  },
+  {
+    "busNumber": 4,
+    "stopCount": 5,
+    "busStops": [
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      },
+      {
+        "stopAreaId": 10011,
+        "stopName": "Frihamnsporten"
+      }
+    ]
+  },
+  {
+    "busNumber": 3,
+    "stopCount": 4,
+    "busStops": [
+      {
+        "stopAreaId": 10001,
+        "stopName": "Stadshagsplan"
+      },
+      {
+        "stopAreaId": 10002,
+        "stopName": "John Bergs plan"
+      },
+      {
+        "stopAreaId": 10006,
+        "stopName": "Arbetargatan"
+      },
+      {
+        "stopAreaId": 10010,
+        "stopName": "Frihamnens färjeterminal"
+      }
+    ]
+  }
+]

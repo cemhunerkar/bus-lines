@@ -1,0 +1,13 @@
+springdoc:
+  swagger-ui.path: /swagger-ui.html
+
+logging.level:
+  com.cem: ${SERVICE_LOG_LEVEL:debug}
+
+client:
+  sl:
+    base-url: ${SL_API_BASE_URL:https://api.sl.se}
+    api-key: ${SL_API_KEY:791e329cb73847399d40229a7ca09a28}
+
+cron:
+  traffic-data: ${TRAFFIC_DATA_RENEWAL:* 5 2 * * *}
