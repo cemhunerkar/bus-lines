@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.collapsible {
+  background-color: #e5e5e5;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+}
+
+.header {
+  background-color: #04AA6D;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: x-large;
+  height: 56px;
+}
+
+.fakeRow {
+  border-bottom: 3px solid #fff;
+}
+
+.active,
+.collapsible:hover {
+  background-color: #ddd;
+}
+
+.content {
+  padding: 0;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  width: 95%;
+  float: right;
+}
+
+#results {
+  margin: auto;
+  width: 50%;
+  padding-top: 50px;
+}
+
+#busTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+
+#busTable td, #busTable thead {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#busTable tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+#busTable tbody tr:hover {
+  background-color: #ddd;
+}
+
+#busTable thead {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+#busTable td a {
+  float: right;
+  font-size: 24px;
+}
+
+.busNumber {
+  width: 50%;
+  float: left;
+}
+
+.stopCount {
+  width: 50%;
+  float: right;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
