@@ -1,53 +1,56 @@
-# Longest Bus Lines
+# Top 10 Bus Lines
 
-### Building and Running Locally
+The application fetches the data from SL API and displays top 10 longest bus routes.
+
+---
+
+### How to Build
 
 #### Prerequisites
 
 - JDK 17
 
-#### Building
-
 Go to root directory and run:
 
 `./mvnw clean install`
 
-#### Running
+---
 
-After the project is built locally, you can run it with:
+### How to run
 
-`./mvnw spring-boot:run`
+After the project is built successfully
 
-Then go to http://localhost:8080/ in browser.
+- Run `./mvnw spring-boot:run`
+- Go to http://localhost:8080/ in browser.
 
 You can also use the backend endpoints directly.
 
-http://localhost:8080/topLines?numberOfResults=10
+- http://localhost:8080/topLines?numberOfResults=10
 
-http://localhost:8080/renew
+- http://localhost:8080/renew
 
-##### Dockerized Running
+#### Dockerized Running
 
 Make sure you have docker running in the background.
 
-Build the project with: `./mvnw clean install`
+- Build the project: `./mvnw clean install`
 
-Build docker image with: `docker build -t top-bus-lines .`
+- Build docker image: `docker build -t top-bus-lines .`
 
-Run docker image with: `docker run -p 8080:8080 top-bus-lines`
+- Run docker image: `docker run -p 8080:8080 top-bus-lines`
+
+---
 
 #### API Documentation
 
 When the application is running, it can be accessed here:
 http://localhost:8080/swagger-ui.html
 
-### Concepts
+---
 
-#### Domain Driven Design
+## Concepts
 
-[//]: # (todo asdasd)
-
-#### Ports and Adapters Pattern
+### Ports and Adapters Pattern
 
 This pattern is used in the project, it is also known as, hexagonal architecture
 
@@ -59,9 +62,10 @@ https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)
 
 https://martinfowler.com/articles/practical-test-pyramid.html
 
-#### Speed
+#### Quick Feedback
 
-Speed is important. For productivity, we need quick feedback during testing. Extensive usage of `@SpringBootTest` or any
+Speed is important. For higher productivity, we need quick feedback during testing. Extensive usage of `@SpringBootTest`
+or any
 other test that will start the full context will slow down the tests significantly.
 So I only used it in E2E test once.
 Other integration tests are done with standalone `WebTestClient` and mocks.
@@ -70,7 +74,9 @@ Millisecond testing:
 
 https://www.youtube.com/watch?v=sUclXYMDI94
 
-### Possible Improvements
+---
+
+### Improvement points
 
 #### Reactive
 
