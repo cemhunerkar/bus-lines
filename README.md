@@ -1,3 +1,5 @@
+[![Build Status](https://github.com/cemhunerkar/bus-lines/actions/workflows/maven_build.yml/badge.svg)](https://github.com/cemhunerkar/bus-lines/actions/workflows/maven_build.yml)
+
 # Longest Bus Routes
 
 The application fetches the data from SL API and displays top 10 longest bus routes.
