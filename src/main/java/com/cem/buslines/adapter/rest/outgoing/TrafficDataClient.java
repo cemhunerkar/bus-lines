@@ -1,5 +1,6 @@
 package com.cem.buslines.adapter.rest.outgoing;
 
+import com.cem.buslines.configuration.ExternalClientException;
 import com.cem.buslines.domain.model.BusJourney;
 import com.cem.buslines.domain.model.BusNumber;
 import com.cem.buslines.domain.model.BusStop;
@@ -11,6 +12,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -46,6 +48,7 @@ public class TrafficDataClient {
             .retrieve()
             .bodyToMono(TrafficDataResponse.class)
             .retry(3)
+            .onErrorMap(ExternalClientException::new)
             .map(TrafficDataResponse::responseData)
             .map(ResponseData::result)
             .flatMapMany(Flux::fromIterable)
@@ -64,12 +67,16 @@ public class TrafficDataClient {
             .retrieve()
             .bodyToMono(TrafficDataResponse.class)
             .retry(3)
-            .map(TrafficDataResponse::responseData)
-            .map(ResponseData::result)
-            .map(this::groupResultsAndMap);
+            .onErrorMap(ExternalClientException::new)
+            .map(this::getBusJourneysAndGroup);
   }
 
-  private List<BusJourney> groupResultsAndMap(List<ResultData> results) {
+  private List<BusJourney> getBusJourneysAndGroup(TrafficDataResponse trafficDataResponse) {
+    List<ResultData> results = Optional.ofNullable(trafficDataResponse)
+            .map(TrafficDataResponse::responseData)
+            .map(ResponseData::result)
+            .orElseThrow();
+
     return results.stream()
             .filter(line -> line.directionCode() == 1)
             .collect(

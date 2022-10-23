@@ -1,5 +1,6 @@
 package com.cem.buslines.adapter.rest.outgoing;
 
+import com.cem.buslines.configuration.ExternalClientException;
 import com.cem.buslines.domain.model.BusJourney;
 import com.cem.buslines.domain.model.BusStop;
 import com.cem.buslines.domain.model.StopId;
@@ -42,7 +43,7 @@ class TrafficDataClientTest {
   }
 
   @Test
-  void should_get_bus_details() throws IOException {
+  void should_get_journey_details() throws IOException {
     WebClient webClientForTest = testClient(wireMockServer.baseUrl());
     TrafficDataClient trafficDataClient = new TrafficDataClient(webClientForTest, API_KEY);
     String mockResponse = readResource("/responses/get_journeys_response.json");
@@ -62,6 +63,26 @@ class TrafficDataClientTest {
   }
 
   @Test
+  void should_throw_when_external_journey_details_call_fails() {
+    WebClient webClientForTest = testClient(wireMockServer.baseUrl());
+    TrafficDataClient trafficDataClient = new TrafficDataClient(webClientForTest, API_KEY);
+    wireMockServer.stubFor(
+            get(urlPathEqualTo("/api2/LineData.json"))
+                    .willReturn(aResponse()
+                            .withStatus(400)));
+
+    Mono<List<BusJourney>> actual = trafficDataClient.fetchBusJourneys();
+
+    StepVerifier
+            .create(actual)
+            .expectErrorSatisfies(exception ->
+                    assertThat(exception)
+                            .isInstanceOf(ExternalClientException.class)
+                            .hasMessage("Problem occurred in external call"))
+            .verify();
+  }
+
+  @Test
   void should_get_stop_details() throws IOException {
     WebClient webClientForTest = testClient(wireMockServer.baseUrl());
     TrafficDataClient trafficDataClient = new TrafficDataClient(webClientForTest, API_KEY);
@@ -78,6 +99,26 @@ class TrafficDataClientTest {
                             .extracting(BusStop::stopId)
                             .containsOnly(new StopId(10001), new StopId(10002), new StopId(10003)))
             .verifyComplete();
+  }
+
+  @Test
+  void should_throw_when_external_stop_details_call_fails() {
+    WebClient webClientForTest = testClient(wireMockServer.baseUrl());
+    TrafficDataClient trafficDataClient = new TrafficDataClient(webClientForTest, API_KEY);
+    wireMockServer.stubFor(
+            get(urlPathEqualTo("/api2/LineData.json"))
+                    .willReturn(aResponse()
+                            .withStatus(400)));
+
+    Mono<List<BusStop>> actual = trafficDataClient.fetchBusStops();
+
+    StepVerifier
+            .create(actual)
+            .expectErrorSatisfies(exception ->
+                    assertThat(exception)
+                            .isInstanceOf(ExternalClientException.class)
+                            .hasMessage("Problem occurred in external call"))
+            .verify();
   }
 
   private void stubTrafficResponse(String body, String model) {
