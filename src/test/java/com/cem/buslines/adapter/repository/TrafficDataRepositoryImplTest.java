@@ -33,12 +33,28 @@ class TrafficDataRepositoryImplTest {
   }
 
   @Test
-  void should_store_bus_lines() {
+  void should_store_bus_journeys() {
     List<BusJourney> busJourneys = TestData.testBusJourneys();
-    busJourneys.forEach(journey -> busJourneysMap.put(journey.busNumber(), journey));
     int expectedSize = busJourneys.size();
 
-    List<BusJourney> actual = trafficDataRepository.getBusJourneys();
+    trafficDataRepository.storeBusJourneyData(busJourneys);
+    Collection<BusJourney> actual = busJourneysMap.values();
+
+    assertThat(actual).hasSize(expectedSize);
+  }
+
+  @Test
+  void should_not_store_journeys_when_it_does_not_exist_anymore() {
+    List<BusJourney> busJourneys = TestData.testBusJourneys();
+    busJourneys.forEach(journey -> busJourneysMap.put(journey.busNumber(), journey));
+    List<BusJourney> refreshedData = List.of(
+            new BusJourney(new BusNumber(1), List.of()),
+            new BusJourney(new BusNumber(2), List.of()),
+            new BusJourney(new BusNumber(3), List.of()));
+    int expectedSize = refreshedData.size();
+
+    trafficDataRepository.storeBusJourneyData(refreshedData);
+    Collection<BusJourney> actual = busJourneysMap.values();
 
     assertThat(actual).hasSize(expectedSize);
   }
@@ -47,7 +63,6 @@ class TrafficDataRepositoryImplTest {
   void should_store_bus_stops() {
     int count = 5;
     List<BusStop> busStops = TestData.testBusStops(count);
-    busStops.forEach(stop -> busStopsMap.put(stop.stopId(), stop));
 
     trafficDataRepository.storeBusStopData(busStops);
     Collection<BusStop> actual = busStopsMap.values();
@@ -56,7 +71,22 @@ class TrafficDataRepositoryImplTest {
   }
 
   @Test
-  void should_get_bus_lines() {
+  void should_not_store_bus_stops_when_it_does_not_exist_anymore() {
+    List<BusStop> busStops = TestData.testBusStops(5);
+    busStops.forEach(stop -> busStopsMap.put(stop.stopId(), stop));
+    List<BusStop> refreshedData = List.of(
+            new BusStop(new StopId(10001), new StopArea(10001), new StopName("Stadshagsplan")),
+            new BusStop(new StopId(10002), new StopArea(10002), new StopName("Nockeby")));
+    int expectedSize = refreshedData.size();
+
+    trafficDataRepository.storeBusStopData(refreshedData);
+    Collection<BusStop> actual = busStopsMap.values();
+
+    assertThat(actual).hasSize(expectedSize);
+  }
+
+  @Test
+  void should_get_bus_journeys() {
     List<BusJourney> busJourneys = TestData.testBusJourneys();
     busJourneys.forEach(journey -> busJourneysMap.put(journey.busNumber(), journey));
     int expectedSize = busJourneys.size();

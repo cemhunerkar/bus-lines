@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class TrafficDataRepositoryImpl implements TrafficDataRepository {
@@ -25,13 +27,23 @@ public class TrafficDataRepositoryImpl implements TrafficDataRepository {
   @Override
   public void storeBusStopData(List<BusStop> busStops) {
     log.debug("Storing {} bus stops", busStops.size());
-    busStops.forEach(busStop -> busStopsMap.put(busStop.stopId(), busStop));
+    Map<StopId, BusStop> newData = busStops.stream()
+            .collect(Collectors.toMap(BusStop::stopId, Function.identity()));
+    // Cannot perform .clear() and .putAll(), if a request comes in between, result will be empty
+    // Instead we put everything and remove the ones that does not exist in the new data.
+    busStopsMap.putAll(newData);
+    busStopsMap.keySet().removeIf(key -> !newData.containsKey(key));
   }
 
   @Override
   public void storeBusJourneyData(List<BusJourney> busJourneys) {
     log.debug("Storing {} bus journeys", busJourneys.size());
-    busJourneys.forEach(busLine -> busJourneysMap.put(busLine.busNumber(), busLine));
+    Map<BusNumber, BusJourney> newData = busJourneys.stream()
+            .collect(Collectors.toMap(BusJourney::busNumber, Function.identity()));
+    // Cannot perform .clear() and .putAll(), if a request comes in between, result will be empty
+    // Instead we put everything and remove the ones that does not exist in the new data.
+    busJourneysMap.putAll(newData);
+    busJourneysMap.keySet().removeIf(key -> !newData.containsKey(key));
   }
 
   @Override
