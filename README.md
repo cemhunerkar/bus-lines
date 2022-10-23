@@ -32,7 +32,7 @@ You can also use the backend endpoints directly.
 
 - http://localhost:8080/v1/bus-lines/top?numberOfResults=10
 
-- http://localhost:8080/refresh
+- http://localhost:8080/v1/refresh
 
 #### Dockerized Running
 

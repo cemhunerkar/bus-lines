@@ -1,17 +1,14 @@
 import React, { Component, useEffect } from "react";
-import logo from './logo.svg';
 import './App.css';
-import { useTable } from 'react-table'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function EnableToggle(){
   useEffect(() => {
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-        for (i = 0; i < coll.length; i++) {
+        const coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
           coll[i].addEventListener("click", function() {
             this.classList.toggle("active");
-            var content = this.nextElementSibling;
+            const content = this.nextElementSibling;
             if (content.style.display === "block") {
               content.style.display = "none";
             } else {
@@ -39,19 +36,19 @@ class App extends Component {
               <div id="results">
                 <EnableToggle />
                 <h1 className="text-center">Top 10 Bus Lines</h1>
-                <div class="header">
-                  <div class="busNumber">Bus Number</div>
-                  <div class="stopCount">Number of Stops</div>
+                <div className="header">
+                  <div className="busNumber">Bus Number</div>
+                  <div className="stopCount">Number of Stops</div>
                 </div>
                 {
-                  this.state.busLines.map(
+                  busLines.map(
                     busLine =>
-                    <div class="fakeRow">
-                      <button type="button" class="collapsible">
-                        <div class="busNumber">{busLine.busNumber}</div>
-                        <div class="stopCount">{busLine.stopCount} stops ▼</div>
+                    <div className="fakeRow">
+                      <button type="button" className="collapsible">
+                        <div className="busNumber">{busLine.busNumber}</div>
+                        <div className="stopCount">{busLine.stopCount} stops ▼</div>
                       </button>
-                      <div class="content">
+                      <div className="content">
                         <table id="busTable" className="table table-striped">
                           <thead>
                             <tr>
