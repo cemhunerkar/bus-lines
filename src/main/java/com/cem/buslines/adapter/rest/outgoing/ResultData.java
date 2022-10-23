@@ -5,40 +5,33 @@ import com.cem.buslines.domain.model.StopArea;
 import com.cem.buslines.domain.model.StopId;
 import com.cem.buslines.domain.model.StopName;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class ResultData {
+public record ResultData(
+        // bus line properties
+        @JsonProperty("LineNumber")
+        Integer lineNumber,
+        @JsonProperty("DirectionCode")
+        Integer directionCode,
+        @JsonProperty("JourneyPatternPointNumber")
+        Integer journeyPointNumber,
 
-  // bus line properties
-  @JsonProperty("LineNumber")
-  private Integer lineNumber;
-  @JsonProperty("DirectionCode")
-  private Integer directionCode;
-  @JsonProperty("JourneyPatternPointNumber")
-  private Integer journeyPointNumber;
+        // Stop properties
+        @JsonProperty("StopPointNumber")
+        Integer stopPoint,
+        @JsonProperty("StopPointName")
+        String stopName,
+        @JsonProperty("StopAreaTypeCode")
+        String stopType,
+        @JsonProperty("StopAreaNumber")
+        Integer stopAreaId,
 
-  // Stop properties
-  @JsonProperty("StopPointNumber")
-  private Integer stopPoint;
-  @JsonProperty("StopPointName")
-  private String stopName;
-  @JsonProperty("StopAreaTypeCode")
-  private String stopType;
-  @JsonProperty("StopAreaNumber")
-  private Integer stopAreaId;
-
-  // common properties
-  @JsonProperty("LastModifiedUtcDateTime")
-  private String lastModifiedDate;
-  @JsonProperty("ExistsFromDate")
-  private String existsFromDate;
+        // common properties
+        @JsonProperty("LastModifiedUtcDateTime")
+        String lastModifiedDate,
+        @JsonProperty("ExistsFromDate")
+        String existsFromDate) {
 
   public BusStop toBusStop() {
     StopId stopId = new StopId(stopPoint);
@@ -47,5 +40,4 @@ public class ResultData {
 
     return new BusStop(stopId, stopArea, name);
   }
-
 }

@@ -46,10 +46,10 @@ public class TrafficDataClient {
             .retrieve()
             .bodyToMono(TrafficDataResponse.class)
             .retry(3)
-            .map(TrafficDataResponse::getResponseData)
-            .map(ResponseData::getResult)
+            .map(TrafficDataResponse::responseData)
+            .map(ResponseData::result)
             .flatMapMany(Flux::fromIterable)
-            .filter(stop -> stop.getStopType().equals(BUS_TERMINAL))
+            .filter(stop -> stop.stopType().equals(BUS_TERMINAL))
             .map(ResultData::toBusStop)
             .collectList();
   }
@@ -64,16 +64,16 @@ public class TrafficDataClient {
             .retrieve()
             .bodyToMono(TrafficDataResponse.class)
             .retry(3)
-            .map(TrafficDataResponse::getResponseData)
-            .map(ResponseData::getResult)
+            .map(TrafficDataResponse::responseData)
+            .map(ResponseData::result)
             .map(this::groupResultsAndMap);
   }
 
   private List<BusJourney> groupResultsAndMap(List<ResultData> results) {
     return results.stream()
-            .filter(line -> line.getDirectionCode() == 1)
+            .filter(line -> line.directionCode() == 1)
             .collect(
-                    groupingBy(ResultData::getLineNumber, Collectors.mapping(ResultData::getJourneyPointNumber, Collectors.toSet())))
+                    groupingBy(ResultData::lineNumber, Collectors.mapping(ResultData::journeyPointNumber, Collectors.toSet())))
             .entrySet().stream()
             .map(this::entryToBusJourney)
             .toList();

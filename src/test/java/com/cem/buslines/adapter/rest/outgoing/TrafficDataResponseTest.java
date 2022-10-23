@@ -24,7 +24,7 @@ class TrafficDataResponseTest {
     TrafficDataResponse actual = OBJECT_MAPPER.readValue(responseJson, TrafficDataResponse.class);
 
     assertThat(actual).isNotNull();
-    assertThat(actual.getResponseData().getResult())
+    assertThat(actual.responseData().result())
             .hasSize(5)
             .first().isEqualTo(expected);
   }
@@ -44,7 +44,7 @@ class TrafficDataResponseTest {
     TrafficDataResponse actual = OBJECT_MAPPER.readValue(responseJson, TrafficDataResponse.class);
 
     assertThat(actual).isNotNull();
-    assertThat(actual.getResponseData().getResult())
+    assertThat(actual.responseData().result())
             .hasSize(3)
             .first().isEqualTo(expected);
   }
