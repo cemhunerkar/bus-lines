@@ -7,7 +7,17 @@ The application fetches the data from SL API and displays top 10 longest bus rou
 Bus routes and bus stops are fetched from Trafiklab API:
 https://www.trafiklab.se/api/trafiklab-apis/sl/stops-and-lines-2/
 
-Trafiklab updates the data everyday between 00:00-02:00. The application refreshes its data at 02:05.
+Trafiklab updates the data every day between 00:00-02:00. The application refreshes its data at 02:05.
+
+---
+
+### Technologies
+
+- Java 17
+- Spring boot
+- Docker
+- Maven
+- React
 
 ---
 
