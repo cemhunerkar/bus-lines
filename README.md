@@ -2,6 +2,11 @@
 
 The application fetches the data from SL API and displays top 10 longest bus routes.
 
+Bus routes and bus stops are fetched from Trafiklab API:
+https://www.trafiklab.se/api/trafiklab-apis/sl/stops-and-lines-2/
+
+Trafiklab updates the data everyday between 00:00-02:00. The application refreshes its data at 02:05.
+
 ---
 
 ### How to Build
