@@ -4,6 +4,7 @@ import com.cem.buslines.configuration.ValidationException;
 import com.cem.buslines.domain.ports.BusLinesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import reactor.core.publisher.Flux;
 @Slf4j
 @ResponseBody
 @RestController
+@RequestMapping("/v1")
 public class BusLinesController {
 
   private final BusLinesService busLinesService;
@@ -20,9 +22,9 @@ public class BusLinesController {
     this.busLinesService = busLinesService;
   }
 
-  @GetMapping("/topLines")
-  public Flux<BusLineResponse> getTopLines(@RequestParam Integer numberOfResults) {
-    log.debug("Received getTopLines request: {}", numberOfResults);
+  @GetMapping("/bus-lines/top")
+  public Flux<BusLineResponse> getTopBusLines(@RequestParam Integer numberOfResults) {
+    log.debug("Received getTopBusLines request: {}", numberOfResults);
     validate(numberOfResults);
 
     return Flux.fromIterable(busLinesService.getBusLinesWithMostStops(numberOfResults))

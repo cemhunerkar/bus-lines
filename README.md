@@ -25,7 +25,7 @@ After the project is built successfully
 
 You can also use the backend endpoints directly.
 
-- http://localhost:8080/topLines?numberOfResults=10
+- http://localhost:8080/v1/bus-lines/top?numberOfResults=10
 
 - http://localhost:8080/refresh
 

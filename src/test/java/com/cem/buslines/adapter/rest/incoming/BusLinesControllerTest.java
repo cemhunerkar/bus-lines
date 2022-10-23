@@ -42,7 +42,7 @@ class BusLinesControllerTest {
     when(busLinesService.getBusLinesWithMostStops(numberOfResults)).thenReturn(longestBusLines);
 
     webTestClient.get()
-            .uri(uriBuilder -> uriBuilder.path("/topLines")
+            .uri(uriBuilder -> uriBuilder.path("/v1/bus-lines/top")
                     .queryParam("numberOfResults", "10").build())
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
@@ -63,7 +63,7 @@ class BusLinesControllerTest {
              """;
 
     webTestClient.get()
-            .uri(uriBuilder -> uriBuilder.path("/topLines")
+            .uri(uriBuilder -> uriBuilder.path("/v1/bus-lines/top")
                     .queryParam("numberOfResults", numberOfResults).build())
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
@@ -74,7 +74,7 @@ class BusLinesControllerTest {
   @Test
   void should_refresh_data() {
     webTestClient.get()
-            .uri("/refresh")
+            .uri("/v1/refresh")
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
             .expectStatus().isOk();

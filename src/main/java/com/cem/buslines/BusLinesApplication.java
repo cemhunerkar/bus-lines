@@ -2,7 +2,6 @@ package com.cem.buslines;
 
 import com.cem.buslines.domain.ports.BusLinesService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -17,8 +16,11 @@ import java.util.Arrays;
 @SpringBootApplication
 public class BusLinesApplication {
 
-  @Autowired
-  private BusLinesService busLinesService;
+  private final BusLinesService busLinesService;
+
+  public BusLinesApplication(BusLinesService busLinesService) {
+    this.busLinesService = busLinesService;
+  }
 
   public static void main(String[] args) {
     SpringApplication.run(BusLinesApplication.class, args);

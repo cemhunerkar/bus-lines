@@ -28,7 +28,7 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const response = await fetch('/topLines?numberOfResults=10');
+    const response = await fetch('/v1/bus-lines/top?numberOfResults=10');
     const body = await response.json();
     this.setState({busLines: body});
   }
