@@ -38,8 +38,8 @@ public class BusLinesApplication {
    * SL updates the data between 00:00 and 02:00, this scheduler will run at 02:05
    */
   @Scheduled(cron = "${cron.traffic-data}")
-  public void renewTrafficData() {
-    log.info("[JOB] Renewing traffic data");
+  public void refreshTrafficData() {
+    log.info("[JOB] Refreshing traffic data");
     busLinesService.fetchAndStoreJourneyData();
   }
 }

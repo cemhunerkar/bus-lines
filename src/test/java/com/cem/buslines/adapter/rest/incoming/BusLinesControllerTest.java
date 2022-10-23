@@ -72,9 +72,9 @@ class BusLinesControllerTest {
   }
 
   @Test
-  void should_renew_data() {
+  void should_refresh_data() {
     webTestClient.get()
-            .uri("/renew")
+            .uri("/refresh")
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
             .expectStatus().isOk();

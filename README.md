@@ -27,7 +27,7 @@ You can also use the backend endpoints directly.
 
 - http://localhost:8080/topLines?numberOfResults=10
 
-- http://localhost:8080/renew
+- http://localhost:8080/refresh
 
 #### Dockerized Running
 
@@ -98,5 +98,5 @@ Right now only bus lines are supported, other transportation methods (metro, tra
 #### UI Improvements
 
 - Dropdown selector can be added to change the number of results (10,25,50, etc)
-- `Renew Data` button can be added, which will call `/renew` endpoint in the background
+- `Refresh Data` button can be added, which will call `/refresh` endpoint in the background
 - Better styling

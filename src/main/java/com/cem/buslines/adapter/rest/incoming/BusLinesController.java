@@ -29,9 +29,9 @@ public class BusLinesController {
             .map(BusLineResponse::fromDomain);
   }
 
-  @GetMapping("/renew")
-  public void renewData() {
-    log.debug("Received renew data request");
+  @GetMapping("/refresh")
+  public void refreshData() {
+    log.debug("Received refresh data request");
     busLinesService.fetchAndStoreJourneyData();
   }
 
