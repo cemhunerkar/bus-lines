@@ -1,6 +1,7 @@
 package com.cem.buslines.adapter.rest.incoming;
 
 import com.cem.buslines.configuration.ControllerErrorHandler;
+import com.cem.buslines.configuration.ExternalClientException;
 import com.cem.buslines.domain.model.BusLine;
 import com.cem.buslines.domain.ports.BusLinesService;
 import com.cem.buslines.utils.TestData;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
@@ -15,6 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static com.cem.buslines.utils.TestUtils.readResource;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -57,8 +60,8 @@ class BusLinesControllerTest {
   void should_return_bad_request_when_the_parameter_is_invalid(int numberOfResults) {
     String errorResponse = """
             {
-               errorCode: 10000,
-               errorMessage: "Number of results should be in range 1-50"
+               "errorCode": 10000,
+               "errorMessage": "Number of results should be in range 1-50"
             }
              """;
 
@@ -78,6 +81,27 @@ class BusLinesControllerTest {
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
             .expectStatus().isOk();
+    verify(busLinesService).fetchAndStoreJourneyData();
+  }
+
+  @Test
+  void should_return_internal_server_error_when_data_cannot_be_fetched() {
+    RuntimeException cause = new RuntimeException("root cause");
+    doThrow(new ExternalClientException(cause))
+            .when(busLinesService).fetchAndStoreJourneyData();
+    String errorResponse = """
+            {
+               "errorCode": 10001,
+               "errorMessage": "Problem occurred in external call"
+            }
+             """;
+
+    webTestClient.get()
+            .uri("/v1/refresh")
+            .accept(MediaType.APPLICATION_JSON)
+            .exchange()
+            .expectStatus().isEqualTo(HttpStatus.SERVICE_UNAVAILABLE)
+            .expectBody().json(errorResponse);
     verify(busLinesService).fetchAndStoreJourneyData();
   }
 }
